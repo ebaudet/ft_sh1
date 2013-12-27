@@ -6,7 +6,7 @@
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/27 22:40:37 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/27 22:40:37 by ebaudet          ###   ########.fr       */
+/*   Updated: 2013/12/27 23:20:03 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		ft_exec_cmd(t_data *data)
 			ft_putstr(data->argv[1]);
 			/*chdir(argv[1]);*/
 		}
-		ft_putstr("pas d'arguments\n");		
+		ft_putstr("pas d'arguments\n");
 	}
 	data->pid = fork();
 	if (data->pid == -1)
