@@ -32,7 +32,7 @@ SRCS 	= ft_atoi.c ft_putchar.c ft_strlen.c \
 		get_next_line.c
 OBJS	= ${SRCS:.c=.o}
 INC		= includes/
-FLAGS 	= -Wall -Wextra -Werror
+FLAGS 	= -Wall -Wextra -Werror -pedantic
 
 all: $(NAME)
 

@@ -68,12 +68,24 @@ int		ft_exec(t_data *data)
 		i++;
 	}
 	if (t == -1 && ft_strcmp(data->name_cmd, "exit") != 0)
-		{
-			ft_putstr("[NOT_FOUND] : cherche pas la petite bete.");
-			ft_putchar('\n');
-			exit(0);
-		}
+		p_err("command not found: ", data->name_cmd, 0);
 	return (0);
+}
+
+void	ft_exec_cmd_cd(t_data *data)
+{
+	char	*str;
+
+	if (data->argv[1])
+	{
+		if ((chdir(data->argv[1])) == -1)
+			p_err("cd: no such file or directory: ", data->argv[1], NO_ERR);
+	}
+	else
+	{
+		chdir(str = ft_strsplit(data->env[3], '=')[1]);
+		free(str);
+	}
 }
 
 int		ft_exec_cmd(t_data *data)
@@ -81,21 +93,15 @@ int		ft_exec_cmd(t_data *data)
 	int		ret;
 
 	if (ft_strcmp(data->name_cmd, "cd") == 0)
-	{
-		if (data->argv[1])
-		{
-			ft_putstr(data->argv[1]);
-			/*chdir(argv[1]);*/
-		}
-		ft_putstr("pas d'arguments\n");
-	}
-	data->pid = fork();
+		ft_exec_cmd_cd(data);
+	else
+		data->pid = fork();
 	if (data->pid == -1)
 	{
 		ft_putstr("fork : problem.");
 		ft_putchar('\n');
 	}
-	if (data->pid == 0)
+	if (data->pid == 0 && (ft_strcmp(data->name_cmd, "cd") != 0))
 	{
 		ft_exec(data);
 		exit(0);

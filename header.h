@@ -21,6 +21,10 @@
 # include <sys/wait.h>
 # include "libft/includes/libft.h"
 
+# ifndef NO_ERR
+#  define NO_ERR 42
+# endif
+
 typedef struct		s_data
 {
 	char			**argv;
@@ -30,11 +34,24 @@ typedef struct		s_data
 	char			*prompt;
 }					t_data;
 
-int		ft_exec_cmd(t_data *data);
+/*
+** main.c
+*/
 int		ft_get_cmd(t_data *data);
-int		ft_exec(t_data *data);
-char	**ft_get_path(char **tab);
-int		ft_count_c(char *str, char c);
 char	*ft_get_user(char **tab);
+
+/*
+** funct.c
+*/
+int		ft_count_c(char *str, char c);
+char	**ft_get_path(char **tab);
+int		ft_exec(t_data *data);
+void	ft_exec_cmd_cd(t_data *data);
+int		ft_exec_cmd(t_data *data);
+
+/*
+** print_error.c
+*/
+void	p_err(char *s1, char *s2, int error);
 
 #endif

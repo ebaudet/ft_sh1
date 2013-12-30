@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebaudet <ebaudet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/22 20:12:36 by ebaudet           #+#    #+#             */
-/*   Updated: 2013/12/22 20:12:36 by ebaudet          ###   ########.fr       */
+/*   Created: 2013/12/30 15:03:14 by ebaudet           #+#    #+#             */
+/*   Updated: 2013/12/30 15:03:14 by ebaudet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+void	p_err(char *s1, char *s2, int error)
 {
-	int		ret;
-
-	ret = 0;
-	while (!(ret = *(unsigned char *) s1 - *(unsigned char *) s2)
-		&& *s2 && n--)
-	{
-		++s1;
-		++s2;
-	}
-	if (ret < 0)
-		ret = -1;
-	else if (ret > 0)
-		ret = 1 ;
-	return (ret);
+	ft_putstr(s1);
+	ft_putstr(s2);
+	ft_putstr("\n");
+	if (error != NO_ERR)
+		exit(error);
 }

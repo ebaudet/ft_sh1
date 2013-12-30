@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME	= ft_minishell1
-SRCS	= main.c funct.c
+SRCS	= main.c funct.c print_error.c
 OBJS	= ${SRCS:.c=.o}
 INC		= ./
 FLAGS	= -Wall -Wextra -Werror -pedantic
